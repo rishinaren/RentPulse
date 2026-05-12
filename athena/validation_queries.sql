@@ -20,12 +20,14 @@ where dataset_name in (
 );
 
 -- name: duplicate_record_hashes
+-- Same logical row re-ingested in a later run shares record_hash; only flag duplicates within one run_id.
 select
     dataset_name,
     record_hash,
+    run_id,
     count(*) as duplicate_count
 from ${glue_database}.${raw_table}
-group by dataset_name, record_hash
+group by dataset_name, record_hash, run_id
 having count(*) > 1
 limit 100;
 

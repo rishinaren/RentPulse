@@ -101,7 +101,8 @@ class AthenaValidator:
         if normalized_name == "duplicate_record_hashes":
             if rows:
                 examples = ", ".join(
-                    f"{row.get('dataset_name', '')}:{row.get('record_hash', '')}" for row in rows[:5]
+                    f"{row.get('dataset_name', '')}:{row.get('record_hash', '')}:{row.get('run_id', '')}"
+                    for row in rows[:5]
                 )
                 raise RuntimeError(f"Athena validation duplicate_record_hashes failed: {examples}")
             return "passed"
