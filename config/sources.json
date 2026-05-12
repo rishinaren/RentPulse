@@ -31,7 +31,7 @@
       "name": "nyc_dob_approved_permits",
       "dataset_type": "permits",
       "format": "csv",
-      "url": "https://data.cityofnewyork.us/resource/rbx6-tga4.csv?$limit=50000&$order=issued_date DESC",
+      "url": "https://data.cityofnewyork.us/resource/rbx6-tga4.csv?$limit=10000&$order=issued_date DESC",
       "primary_key": ["job_filing_number", "work_permit", "sequence_number"],
       "attribution": "NYC Open Data, DOB NOW: Build - Approved Permits",
       "notes": "Permit/development activity feed."

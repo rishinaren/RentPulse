@@ -25,6 +25,10 @@
       "Action": [
         "glue:CreateDatabase",
         "glue:GetDatabase",
+        "glue:GetDatabases",
+        "glue:CreateTable",
+        "glue:UpdateTable",
+        "glue:DeleteTable",
         "glue:CreateCrawler",
         "glue:GetCrawler",
         "glue:UpdateCrawler",
@@ -32,7 +36,13 @@
         "glue:StopCrawler",
         "glue:ListCrawlers",
         "glue:GetTables",
-        "glue:GetTable"
+        "glue:GetTable",
+        "glue:GetPartitions",
+        "glue:GetPartition",
+        "glue:BatchCreatePartition",
+        "glue:CreatePartition",
+        "glue:DeletePartition",
+        "glue:BatchDeletePartition"
       ],
       "Resource": "*"
     },
