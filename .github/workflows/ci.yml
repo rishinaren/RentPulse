@@ -1,0 +1,42 @@
+name: RentPulse CI
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Python dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run unit tests
+        run: python -m unittest discover -s tests
+
+      - name: Compile Python files
+        run: python -m compileall rent_pulse scripts airflow/dags
+
+      - name: Validate source manifest
+        run: python -m rent_pulse sources
+
+      - name: Validate dbt SQL assets are present
+        run: |
+          test -f dbt/dbt_project.yml
+          test -f dbt/models/marts/mart_neighborhood_scorecard.sql
+          test -f snowflake/copy_raw_records.sql
+
+      - name: Dry-run listing ingestion
+        run: python -m rent_pulse ingest --source listing_snapshots --dry-run

@@ -1,0 +1,63 @@
+version: 2
+
+sources:
+  - name: raw
+    database: "{{ env_var('SNOWFLAKE_DATABASE', 'RENTPULSE') }}"
+    schema: raw
+    loaded_at_field: loaded_at
+    freshness:
+      warn_after: {count: 36, period: hour}
+      error_after: {count: 72, period: hour}
+    tables:
+      - name: raw_records
+        columns:
+          - name: dataset_name
+            tests: [not_null]
+          - name: source_row_id
+            tests: [not_null]
+          - name: record_hash
+            tests: [not_null]
+
+models:
+  - name: stg_listing_snapshots
+    columns:
+      - name: listing_snapshot_id
+        tests: [not_null, unique]
+      - name: listing_id
+        tests: [not_null]
+      - name: snapshot_date
+        tests: [not_null]
+      - name: rent
+        tests: [not_null]
+  - name: stg_rent_prices
+    columns:
+      - name: rent_price_id
+        tests: [not_null, unique]
+      - name: postal_code
+        tests: [not_null]
+      - name: rent_month
+        tests: [not_null]
+  - name: stg_inventory
+    columns:
+      - name: inventory_id
+        tests: [not_null, unique]
+      - name: postal_code
+        tests: [not_null]
+  - name: stg_permits
+    columns:
+      - name: permit_id
+        tests: [not_null, unique]
+      - name: postal_code
+        tests: [not_null]
+  - name: stg_neighborhood_housing
+    columns:
+      - name: housing_building_id
+        tests: [not_null, unique]
+      - name: postal_code
+        tests: [not_null]
+      - name: borough
+        tests: [not_null]
+  - name: stg_transit_access
+    columns:
+      - name: station_complex_id
+        tests: [not_null, unique]

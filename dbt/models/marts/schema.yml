@@ -1,0 +1,48 @@
+version: 2
+
+models:
+  - name: dim_listings
+    columns:
+      - name: listing_id
+        tests: [not_null, unique]
+      - name: postal_code
+        tests: [not_null]
+  - name: dim_neighborhoods
+    columns:
+      - name: neighborhood_id
+        tests: [not_null, unique]
+  - name: fct_listing_history
+    columns:
+      - name: listing_snapshot_id
+        tests: [not_null, unique]
+      - name: listing_id
+        tests:
+          - relationships:
+              to: ref('dim_listings')
+              field: listing_id
+  - name: fct_rent_trends
+    columns:
+      - name: zip_month_signal_id
+        tests: [not_null, unique]
+      - name: postal_code
+        tests: [not_null]
+  - name: mart_neighborhood_scorecard
+    columns:
+      - name: neighborhood_scorecard_id
+        tests: [not_null, unique]
+  - name: mart_affordability
+    columns:
+      - name: affordability_id
+        tests: [not_null, unique]
+  - name: mart_inventory_churn
+    columns:
+      - name: inventory_churn_id
+        tests: [not_null, unique]
+  - name: mart_transit_price_effect
+    columns:
+      - name: transit_price_effect_id
+        tests: [not_null, unique]
+  - name: mart_development_activity
+    columns:
+      - name: development_activity_id
+        tests: [not_null, unique]

@@ -1,0 +1,59 @@
+{
+  "sources": [
+    {
+      "name": "zillow_zori_zip",
+      "dataset_type": "rent_prices",
+      "format": "csv",
+      "url": "https://files.zillowstatic.com/research/public_csvs/zori/Zip_zori_uc_sfrcondomfr_sm_month.csv?t=1777745088",
+      "primary_key": ["RegionID"],
+      "attribution": "Zillow Research, Zillow Observed Rent Index ZIP time series",
+      "notes": "Monthly ZIP-level rent price index used for historical rent movement and volatility."
+    },
+    {
+      "name": "zillow_inventory_zip",
+      "dataset_type": "inventory",
+      "format": "csv",
+      "url": "https://files.zillowstatic.com/research/public_csvs/invt_fs/Zip_invt_fs_uc_sfrcondo_sm_month.csv",
+      "primary_key": ["RegionID"],
+      "attribution": "Zillow Research, ZIP inventory time series",
+      "notes": "Housing inventory signal used with rent prices to study market pressure. Replace with a rental-inventory feed when one is licensed."
+    },
+    {
+      "name": "nyc_housing_units_by_building",
+      "dataset_type": "neighborhood_inventory",
+      "format": "csv",
+      "url": "https://data.cityofnewyork.us/resource/hg8x-zxpr.csv?$limit=50000",
+      "primary_key": ["project_id", "building_id"],
+      "attribution": "NYC Open Data, Housing New York Units by Building",
+      "notes": "Building-level housing production and affordability unit signal."
+    },
+    {
+      "name": "nyc_dob_approved_permits",
+      "dataset_type": "permits",
+      "format": "csv",
+      "url": "https://data.cityofnewyork.us/resource/rbx6-tga4.csv?$limit=50000&$order=issued_date DESC",
+      "primary_key": ["job_filing_number", "work_permit", "sequence_number"],
+      "attribution": "NYC Open Data, DOB NOW: Build - Approved Permits",
+      "notes": "Permit/development activity feed."
+    },
+    {
+      "name": "mta_subway_stations",
+      "dataset_type": "transit_access",
+      "format": "csv",
+      "url": "https://data.ny.gov/api/views/5f5g-n3cz/rows.csv?accessType=DOWNLOAD",
+      "primary_key": ["Complex ID"],
+      "attribution": "State of New York Open Data, MTA Subway Stations and Complexes",
+      "notes": "Station, accessibility, and service metadata for transit access signals."
+    },
+    {
+      "name": "listing_snapshots",
+      "dataset_type": "listings",
+      "format": "csv",
+      "url": "file://data/sample/listing_snapshots.csv",
+      "url_env": "RENT_PULSE_LISTINGS_URL",
+      "primary_key": ["listing_id", "snapshot_date"],
+      "attribution": "Configurable public or partner rental listing feed",
+      "notes": "This local seed keeps development runnable. Set RENT_PULSE_LISTINGS_URL to an approved public CSV/JSON listing feed for production amenities and listing-churn tracking."
+    }
+  ]
+}

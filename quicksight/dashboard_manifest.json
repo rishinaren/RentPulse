@@ -1,0 +1,113 @@
+{
+  "data_source": {
+    "id": "rentpulse-snowflake",
+    "name": "RentPulse Snowflake",
+    "database": "RENTPULSE",
+    "warehouse": "RENTPULSE_WH"
+  },
+  "dashboard": {
+    "id": "rentpulse-public-dashboard",
+    "name": "RentPulse Public Housing Intelligence"
+  },
+  "datasets": [
+    {
+      "id": "rentpulse-neighborhood-scorecard",
+      "name": "RentPulse Neighborhood Scorecard",
+      "physical_table_id": "neighborhood_scorecard_sql",
+      "import_mode": "SPICE",
+      "sql": "select * from analytics.mart_neighborhood_scorecard",
+      "columns": [
+        {"Name": "NEIGHBORHOOD_SCORECARD_ID", "Type": "STRING"},
+        {"Name": "POSTAL_CODE", "Type": "STRING"},
+        {"Name": "NEIGHBORHOOD", "Type": "STRING"},
+        {"Name": "BOROUGH", "Type": "STRING"},
+        {"Name": "LATEST_RENT_MONTH", "Type": "DATETIME"},
+        {"Name": "ZORI_RENT", "Type": "DECIMAL"},
+        {"Name": "RENT_YOY_PCT", "Type": "DECIMAL"},
+        {"Name": "SIX_MONTH_RENT_VOLATILITY", "Type": "DECIMAL"},
+        {"Name": "RENT_VOLATILITY_BAND", "Type": "STRING"},
+        {"Name": "ACTIVE_INVENTORY", "Type": "INTEGER"},
+        {"Name": "LISTING_COUNT", "Type": "INTEGER"},
+        {"Name": "AVG_DAYS_ON_MARKET", "Type": "DECIMAL"},
+        {"Name": "AFFORDABLE_RENTAL_UNITS", "Type": "INTEGER"},
+        {"Name": "PERMIT_COUNT", "Type": "INTEGER"},
+        {"Name": "DEVELOPMENT_ACTIVITY_BAND", "Type": "STRING"},
+        {"Name": "RECRUITER_DEMO_SIGNAL_SCORE", "Type": "INTEGER"}
+      ]
+    },
+    {
+      "id": "rentpulse-rent-trends",
+      "name": "RentPulse Rent Trends",
+      "physical_table_id": "rent_trends_sql",
+      "import_mode": "SPICE",
+      "sql": "select * from analytics.fct_rent_trends",
+      "columns": [
+        {"Name": "ZIP_MONTH_SIGNAL_ID", "Type": "STRING"},
+        {"Name": "POSTAL_CODE", "Type": "STRING"},
+        {"Name": "SIGNAL_MONTH", "Type": "DATETIME"},
+        {"Name": "ZORI_RENT", "Type": "DECIMAL"},
+        {"Name": "ACTIVE_INVENTORY", "Type": "INTEGER"},
+        {"Name": "RENT_MOM_DELTA", "Type": "DECIMAL"},
+        {"Name": "RENT_YOY_PCT", "Type": "DECIMAL"},
+        {"Name": "INVENTORY_MOM_DELTA", "Type": "INTEGER"},
+        {"Name": "SIX_MONTH_RENT_VOLATILITY", "Type": "DECIMAL"},
+        {"Name": "RENT_VOLATILITY_BAND", "Type": "STRING"}
+      ]
+    },
+    {
+      "id": "rentpulse-affordability",
+      "name": "RentPulse Affordability",
+      "physical_table_id": "affordability_sql",
+      "import_mode": "SPICE",
+      "sql": "select * from analytics.mart_affordability",
+      "columns": [
+        {"Name": "AFFORDABILITY_ID", "Type": "STRING"},
+        {"Name": "POSTAL_CODE", "Type": "STRING"},
+        {"Name": "SIGNAL_MONTH", "Type": "DATETIME"},
+        {"Name": "ZORI_RENT", "Type": "DECIMAL"},
+        {"Name": "ANNUAL_RENT", "Type": "DECIMAL"},
+        {"Name": "INCOME_NEEDED_AT_30_PCT", "Type": "DECIMAL"},
+        {"Name": "RENT_YOY_PCT", "Type": "DECIMAL"},
+        {"Name": "RENT_VOLATILITY_BAND", "Type": "STRING"}
+      ]
+    },
+    {
+      "id": "rentpulse-development-activity",
+      "name": "RentPulse Development Activity",
+      "physical_table_id": "development_activity_sql",
+      "import_mode": "SPICE",
+      "sql": "select * from analytics.mart_development_activity",
+      "columns": [
+        {"Name": "DEVELOPMENT_ACTIVITY_ID", "Type": "STRING"},
+        {"Name": "BOROUGH", "Type": "STRING"},
+        {"Name": "POSTAL_CODE", "Type": "STRING"},
+        {"Name": "NEIGHBORHOOD_CODE", "Type": "STRING"},
+        {"Name": "HOUSING_PROJECTS", "Type": "INTEGER"},
+        {"Name": "AFFORDABLE_RENTAL_UNITS", "Type": "INTEGER"},
+        {"Name": "TOTAL_HOUSING_UNITS", "Type": "INTEGER"},
+        {"Name": "PERMIT_COUNT", "Type": "INTEGER"},
+        {"Name": "ESTIMATED_DEVELOPMENT_COST", "Type": "DECIMAL"},
+        {"Name": "LATEST_PERMIT_ISSUED_DATE", "Type": "DATETIME"},
+        {"Name": "DEVELOPMENT_ACTIVITY_BAND", "Type": "STRING"}
+      ]
+    },
+    {
+      "id": "rentpulse-transit-price-effect",
+      "name": "RentPulse Transit Price Effect",
+      "physical_table_id": "transit_price_effect_sql",
+      "import_mode": "SPICE",
+      "sql": "select * from analytics.mart_transit_price_effect",
+      "columns": [
+        {"Name": "TRANSIT_PRICE_EFFECT_ID", "Type": "STRING"},
+        {"Name": "BOROUGH", "Type": "STRING"},
+        {"Name": "SNAPSHOT_DATE", "Type": "DATETIME"},
+        {"Name": "AVG_LISTING_RENT", "Type": "DECIMAL"},
+        {"Name": "MEDIAN_LISTING_RENT", "Type": "DECIMAL"},
+        {"Name": "LISTING_COUNT", "Type": "INTEGER"},
+        {"Name": "STATION_COMPLEX_COUNT", "Type": "INTEGER"},
+        {"Name": "ADA_STATION_COMPLEX_COUNT", "Type": "INTEGER"},
+        {"Name": "RENT_PER_STATION_COMPLEX", "Type": "DECIMAL"}
+      ]
+    }
+  ]
+}

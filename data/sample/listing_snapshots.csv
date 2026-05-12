@@ -1,0 +1,6 @@
+listing_id,snapshot_date,address,postal_code,neighborhood,borough,rent,bedrooms,bathrooms,sqft,property_type,amenities,status,listed_date,latitude,longitude
+rp-nyc-0001,2026-03-31,214 W 109th St,10025,Upper West Side,Manhattan,3250,1,1,640,Apartment,"laundry|elevator|dishwasher",active,2026-03-18,40.80243,-73.96515
+rp-nyc-0001,2026-04-30,214 W 109th St,10025,Upper West Side,Manhattan,3375,1,1,640,Apartment,"laundry|elevator|dishwasher",active,2026-03-18,40.80243,-73.96515
+rp-nyc-0002,2026-03-31,41-12 29th St,11101,Long Island City,Queens,4100,2,2,910,Apartment,"doorman|gym|roof deck|in-unit laundry",active,2026-03-08,40.75039,-73.93690
+rp-nyc-0002,2026-04-30,41-12 29th St,11101,Long Island City,Queens,4050,2,2,910,Apartment,"doorman|gym|roof deck|in-unit laundry",leased,2026-03-08,40.75039,-73.93690
+rp-nyc-0003,2026-04-30,88 E 3rd St,10003,East Village,Manhattan,2895,0,1,430,Studio,"pets allowed|laundry",active,2026-04-10,40.72430,-73.98960
